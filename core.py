@@ -1,5 +1,3 @@
-import heapq 
-
 class Node:
     def __init__(self):
         self.shortest_distance = float('inf')
