@@ -78,6 +78,7 @@ def dijkstra():
     for edge in edges:
         list.append(edge.to_)
     if(not hasCommon(list, hospital_nodes)):
+        print('route not found!')
         sys.exit()
 
     nodes[current_node].setShortestDistance(0, None)
@@ -98,20 +99,22 @@ def dijkstra():
         current_node = findNearestOncommingNode(oncomming_nodes, nodes, hospital_nodes)
 
     # calculate the path to target
-    path = []
+    rev_path = []
     previous = visited[-1]
     x = False
     while(x == False):
         for node in visited:
             if(previous == node):
-                path.append(previous)
+                rev_path.append(previous)
                 if(nodes[node].edge):
                     previous = nodes[node].edge.from_
                     break
                 else:
                     x = True
 
-    print(path.reverse)
+    path = rev_path[::-1]
+
+    print(" - ".join(str(x) for x in path))
 
 #run program
 dijkstra()
